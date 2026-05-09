@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CREF - Centre de ressources pour l'enseignant du Français</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/slider.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .teachers-grid {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+
+        .teacher-card {
+            width: 220px;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .teacher-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .teacher-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 4px solid white;
+        }
+
+        .teacher-card h1 {
+            font-size: 16px;
+            margin: 10px 0 5px 0;
+            color: #333;
+        }
+
+        .teacher-card h4 {
+            font-size: 13px;
+            color: #666;
+            margin: 0;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fixed Event Tab -->
+    <div class="event-tab" id="eventTab">
+        <button class="event-tab-btn" id="eventTabBtn">
+            <i class="fas fa-calendar-alt"></i>
+            <span>Événements</span>
+        </button>
+    </div>
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <img src="images/logo.png" alt="CREF Logo" class="logo-img">
+                    <span>CREF</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link">Accueil</a></li>
+                    <li><a href="#about" class="nav-link">À propos</a></li>
+                    <li><a href="#teachers" class="nav-link">Notre Équipe</a></li>
+                    <li><a href="#programs" class="nav-link">Programmes</a></li>
+                    <li><a href="#gallery" class="nav-link">Galerie</a></li>
+                    <li><a href="#apply" class="nav-link apply-btn">Postuler Maintenant</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title">Bienvenue à CREF</h1>
+            <p class="hero-subtitle">Centre de Ressources pour l'Enseignement du Français</p>
+            <p class="hero-description">Ameliorer vos compétences dans la langue française</p>
+            <a href="#apply" class="cta-button">Commencer votre parcours</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>À propos de CREF</h2>
+                <div class="header-underline"></div>
+            </div>
+            <div class="about-content">
+                <!-- Image Slider -->
+                <div class="image-slider-container">
+                    <div class="slider-wrapper">
+                        <div class="slider-deck" id="sliderDeck">
+                            <div class="slider-card" data-index="0">
+                                <img src="images/histoire/01.png" alt="Gallery 1">
+                            </div>
+                            <div class="slider-card" data-index="1">
+                                <img src="images/histoire/02.png" alt="Gallery 2">
+                            </div>
+                            <div class="slider-card" data-index="2">
+                                <img src="images/histoire/03.png" alt="Gallery 3">
+                            </div>
+                            <div class="slider-card" data-index="3">
+                                <img src="images/histoire/04.png" alt="Gallery 4">
+                            </div>
+                            <div class="slider-card" data-index="4">
+                                <img src="images/histoire/05.png" alt="Gallery 5">
+                            </div>
+                            <div class="slider-card" data-index="5">
+                                <img src="images/histoire/06.png" alt="Gallery 6">
+                            </div>
+                            <div class="slider-card" data-index="6">
+                                <img src="images/histoire/07.png" alt="Gallery 7">
+                            </div>
+                            <div class="slider-card" data-index="7">
+                                <img src="images/histoire/08.png" alt="Gallery 8">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation -->
+                    <div class="slider-nav">
+                        <button class="slider-btn prev" id="prevBtn">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="slider-btn next" id="nextBtn">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="slider-pagination" id="sliderPagination">
+                        <span class="page-indicator" id="currentPage">1</span> / <span id="totalPages">8</span>
+                    </div>
+                </div>
+
+                <div class="about-text">
+
+                    <h3>Notre Mission</h3>
+                    <p>CREF est dédié à fournir une éducation suivant le CECRL(Cadre européen commun de référence pour les langues) afin de renforcer le français des futurs leaders et innovateurs. </p>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check-circle"></i> Développer la maîtrise du français</li>
+                        <li><i class="fas fa-check-circle"></i> Stimuler la créativité et l’expression personnelle</li>
+                        <li><i class="fas fa-check-circle"></i> des ressources pédagogiques modernes</li>
+                        <li><i class="fas fa-check-circle"></i> Ouvrir au monde et à la culture francophone</li>
+                        <li><i class="fas fa-check-circle"></i> Accompagner la réussite scolaire et professionnelle</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <img src="images/Ankatso.jpg" alt="CREF Campus" class="responsive-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->  <div class="section-header">
+                <h2>Nos programmes</h2>
+                <div class="header-underline"></div>
+            </div>
+    <section class="Ressources" id="ressources">
+        <div class="show">
+
+        </div>
+    </section>           
+    
+
+    <section class="programs" id="programs">
+        <div class="container">
+          
+            <div class="programs-grid">
+                <!-- programme basique -->
+                <div class="program-card basic-card">
+                    <div class="program-badge">BASIQUE</div>
+                    <h3>Niveau seuil</h3>
+                    <p class="program-price">Fondations du français</p>
+                    <ul class="program-features">
+                        <li><i class="fas fa-check"></i>Bases du français (lecture, écriture, expression)</li>
+                        <li><i class="fas fa-check"></i>Accompagnement pédagogique standard</li>
+                        <li><i class="fas fa-check"></i> Accès aux ressources du CREF (livres & supports numériques)</li>
+                        <li><i class="fas fa-check"></i> Ateliers mensuels d’écriture et d’expression</li>
+                        <li><i class="fas fa-check"></i> Évaluation continue et suivi des progrès</li>
+                        <li><i class="fas fa-check"></i> Certificat de participation</li>
+                    </ul>
+                    <button class="program-btn" onclick="scrollToForm('basic')">Choisir ce programme</button>
+                </div>
+
+                <!-- programme avancé -->
+                <div class="program-card scholar-card featured">
+                    <div class="program-badge premium">Avancé</div>
+                    <h3>Niveau Avancé</h3>
+                    <p class="program-price">Excellence & Révélation du potentiel</p>
+                    <div class="popular-badge">En tendance</div>
+                    <ul class="program-features">
+                        <li><i class="fas fa-check"></i>Programme complet et approfondi en français</li>
+                        <li><i class="fas fa-check"></i>Coaching personnalisé (suivi individuel)</li>
+                        <li><i class="fas fa-check"></i>Accès prioritaire aux ressources et activités</li>
+                        <li><i class="fas fa-check"></i>Ateliers intensifs (écriture, prise de parole, créativité)</li>
+                        <li><i class="fas fa-check"></i>Projets pratiques (rédaction, présentation, création de contenu)</li>
+                        <li><i class="fas fa-check"></i>Opportunités académiques (concours, distinctions)</li>
+                        <li><i class="fas fa-check"></i>Certificat premium du CREF</li>
+                    </ul>
+                    <button class="program-btn" onclick="scrollToForm('scholar')">Choisir ce programme</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--section enseignants -->
+    <section class="teachers" id="teachers">
+        <div class="container">
+            <div class="section-header">
+                <h2>Notre Équipe Pédagogique</h2>
+                <div class="header-underline"></div>
+            </div>
+
+            <div class="teachers-grid" id="teachersGrid">
+                 <div class="teacher-card" id="teacherscard1">
+                    <img src="images/teachers/Velomianta.png" >
+                    <h1>Velomihanta Ranaivo Raholison</h1>
+                    <h4>MC-HDR</h4>
+                 </div>
+
+                 <div class="teacher-card" id="teacherscard2">
+                    <img src="images/teachers/Lanto.png">
+                    <h1>Adéline Lala Harisoa Lantomananoro</h1>
+                    <h4>Doctorante-Adjointe au Chef de service</h4>
+                 </div>
+                <div class="teacher-card" id="teacherscard3">
+                    <img src="images/teachers/Nirina_Ramarosata.jpeg">
+                    <h1>Ramorasata Nirina</h1>
+                    <h4>Doctorante</h4>
+                </div>
+                <div class="teacher-card" id="teacherscard4">
+                    <img src="images/teachers/csm_Cynthia-Hantavololona_3bbbbdb48d.jpg">
+                    <h1>Hantavololona Cynthia</h1>
+                    <h4>Doctorante</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="gallery-background-effect"></div>
+        <div class="container">
+            <div class="section-header">
+                <h2>Galerie</h2>
+                <div class="header-underline"></div>
+            </div>
+            <div class="gallery-filter">
+                <button class="filter-btn active" onclick="filterGallery('all')">All</button>
+                <button class="filter-btn" onclick="filterGallery('university')">University</button>
+                <button class="filter-btn" onclick="filterGallery('campus')">Campus</button>
+                <button class="filter-btn" onclick="filterGallery('events')">Events</button>
+            </div>
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Gallery images will be loaded dynamically -->
+                 <img src="images/gallery/001.jpg" alt="Campus image" class="gallery-image campus" target="campus">
+                <img src="images/gallery/IMG_20230616_120216.jpg" alt="Campus image" class="gallery-image campus">
+                <img src="images/gallery/IMG_5354 (modifié).JPG" alt="University image" class="gallery-image University">
+               
+            </div>
+    
+
+   
+ </section>
+
+    <!-- Application Form Section -->
+    <section class="application" id="apply">
+        <div class="container">
+            <div class="section-header">
+                <h2>S'inscrire à CREF</h2>
+                <div class="header-underline"></div>
+            </div>
+            <div class="form-container">
+                <form id="applicationForm" class="application-form" enctype="multipart/form-data">
+                    <!-- Personal Information -->
+                    <div class="form-section">
+                        <h3>Informations personnelles</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">Nom *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Prénon *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Adresse Email *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Numero télephone *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Educational Information -->
+                    <div class="form-section">
+                        <h3>Informations académiques</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="currentEducation">Niveau d'études actuel *</label>
+                                <select id="currentEducation" name="currentEducation" required>
+                                    <option value="">Selectionner votre niveau</option>
+                                    <option value="high-school">Lycée</option>
+                                    <option value="bachelor">Licence(L1,L2,L3)</option>
+                                    <option value="master">Master(M1,M2)</option>
+                                    <option value="professional">Professionel</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="school">Ecole/Faculté *</label>
+                                <input type="text" id="school" name="school" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="major">Mention/Parcours *</label>
+                                <input type="text" id="major" name="major" required>
+                            </div>
+                           
+                        </div>
+                    </div>
+
+                    <!-- Program Selection -->
+                    <div class="form-section">
+                        <h3>Choix du programme</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="programType">Selectionner votre programme *</label>
+                                <select id="programType" name="programType" required onchange="updateDesiredPrograms()">
+                                    <option value="">Choisir un Programme</option>
+                                    <option value="basic">Niveau seuil</option>
+                                    <option value="scholar">Niveau Avancé</option>
+                                </select>
+                            </div>
+                           
+                        </div>
+                    </div>
+
+                    <!-- Motivation & Achievements -->
+                    <div class="form-section">
+                        <h3>Information additionnel</h3>
+                        <div class="form-group">
+                            <label for="motivation">Quelles sont vos principales difficultés en français oral ou écrit? *</label>
+                            <textarea id="motivation" name="motivation" rows="5" placeholder="Parler de vos difficultés, ou problémes en français..." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="achievements">Quelles sont vos attentes concernant le renforcement du français?(facultatif)</label>
+                            <textarea id="achievements" name="achievements" rows="4" placeholder="Vos attentes au programme..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Study Schedule Calendar -->
+                    <div class="form-section">
+                        <h3>Vos disponibilités</h3>
+                        <p style="color: var(--text-light); margin-bottom: 20px;">Sélectionnez les jours et heures que vous pouvez consacrer au programme du CREF</p>
+                        <div class="schedule-calendar" id="scheduleCalendar">
+                            <!-- Calendar will be generated by JavaScript -->
+                        </div>
+                        <div id="selectedSchedule" class="selected-schedule"></div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-section">
+                        <button type="submit" class="submit-btn">Soumettre la demande</button>
+                        <p class="form-note">* Champs obligatoires</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>CREF</h4>
+                    <p>Centre de Ressources pour l'Enseignement du Français</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Lien Rapides</h4>
+                    <ul>
+                        <li><a href="#about">À propos</a></li>
+                        <li><a href="#programs">Programmes</a></li>
+                        <li><a href="#teachers">Faculté</a></li>
+                        <li><a href="#apply">Postuler</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: admissions@cref.edu</p>
+                    <p>Phone: +261 34 04 657 68</p>
+                </div>
+                <div class="footer-section social">
+                    <h4>Suivez-nous</h4>
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CREF - Centre de ressources pour l'enseignement du Français. Tous droits reservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content success">
+            <span class="close">&times;</span>
+            <i class="fas fa-check-circle"></i>
+            <h2>Inscription reussi!</h2>
+            <p>Merci de votre intérêt pour notre programme, nous prendrons contact avec vous dans les prochains jours.</p>
+            <p class="submission-id">Inscription ID: <strong id="submissionId"></strong></p>
+            <button onclick="location.reload()" class="modal-btn">Fermer</button>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="errorModal" class="modal">
+        <div class="modal-content error">
+            <span class="close">&times;</span>
+            <i class="fas fa-exclamation-circle"></i>
+            <h2>Erreur d'inscription</h2>
+            <p id="errorMessage"></p>
+            <button class="modal-btn" onclick="closeErrorModal()">Veuillez réessayer</button>
+        </div>
+    </div>
+
+    <!-- Event Registration Modal -->
+    <div id="eventModal" class="modal event-modal">
+        <div class="modal-content event-content">
+            <span class="close" id="eventClose">&times;</span>
+            <h2>Inscription Événement</h2>
+            <p class="event-subtitle">Rejoignez notre prochain événement CREF</p>
+            
+            <form id="eventForm" class="event-form">
+                <div class="form-group">
+                    <label for="eventNom">Nom *</label>
+                    <input type="text" id="eventNom" name="nom" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="eventPrenom">Prénom *</label>
+                    <input type="text" id="eventPrenom" name="prenom" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="eventFiliere">Filière *</label>
+                    <input type="text" id="eventFiliere" name="filiere" placeholder="ex: Lettres, Sciences, etc." required>
+                </div>
+
+                <div class="form-group">
+                    <label for="eventEtablissement">Établissement *</label>
+                    <input type="text" id="eventEtablissement" name="etablissement" placeholder="Nom de votre établissement" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="eventNiveau">Niveau d'étude *</label>
+                    <select id="eventNiveau" name="niveau" required>
+                        <option value="">Sélectionner votre niveau</option>
+                        <option value="6eme">6ème</option>
+                        <option value="5eme">5ème</option>
+                        <option value="4eme">4ème</option>
+                        <option value="3eme">3ème</option>
+                        <option value="2nde">2nde</option>
+                        <option value="1ere">1ère</option>
+                        <option value="terminale">Terminale</option>
+                        <option value="licence">Licence</option>
+                        <option value="master">Master</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-btn">S'inscrire à l'événement</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Event Success Modal -->
+    <div id="eventSuccessModal" class="modal">
+        <div class="modal-content success">
+            <span class="close">&times;</span>
+            <i class="fas fa-check-circle"></i>
+            <h2>Inscription Confirmée!</h2>
+            <p>Merci de votre inscription à l'événement CREF. Vous recevrez les détails par email.</p>
+            <button onclick="closeEventSuccessModal()" class="modal-btn">Fermer</button>
+        </div>
+    </div> 
+    
+    <script src="js/main.js"></script>
+  
+</body>
+</html>
