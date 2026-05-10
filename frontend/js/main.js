@@ -456,11 +456,12 @@ function initEventModal() {
             filiere: document.getElementById('eventFiliere').value,
             etablissement: document.getElementById('eventEtablissement').value,
             niveau: document.getElementById('eventNiveau').value,
+            activite: (document.getElementById('eventActivite') && document.getElementById('eventActivite').value) || '',
             date_inscription: new Date().toLocaleString('fr-FR')
         };
 
         try {
-            const response = await fetch('https://script.google.com/macros/s/AKfycbyoqp1iiLaH7WtQnIOHEjzvvSUW4PXd2CiVrvyZbH3ViuJZ1FrFbjxN2rDwSOOXXuxx/exec', {
+            const response = await fetch('https://script.google.com/macros/s/AKfycbw70gy2x-jt2afMFN2cm8PxHDXt3LUp9fDfecvetg1_dNWXfObVqR78vkt5f1gN-yZb/exec', {
                 method: 'POST',
                 mode: 'cors', 
                 headers: {

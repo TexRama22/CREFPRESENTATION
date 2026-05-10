@@ -58,9 +58,12 @@
 
     <!-- Fixed Event Tab -->
     <div class="event-tab" id="eventTab">
-        <button class="event-tab-btn" id="eventTabBtn">
+        <button class="event-tab-btn" id="eventTabBtn" onclick="document.getElementById('eventModal').style.display='block'" aria-haspopup="dialog" aria-controls="eventModal">
             <i class="fas fa-calendar-alt"></i>
-            <span>Événements</span>
+            <span>Événements</span> 
+            <small class="event-date">20-21-22 Mai 2026</small>
+            <span>Cliquer ici !</span>
+
         </button>
     </div>
 
@@ -254,6 +257,11 @@
                     <h1>Hantavololona Cynthia</h1>
                     <h4>Doctorante</h4>
                 </div>
+                    <div class="teacher-card" id="teacherscard5">
+                        <img src="images/teachers/Rajemison Voahirana.png">
+                        <h1>Rajemison Voahirana</h1>
+                        <h4>Doctorante</h4>
+                    </div>
             </div>
         </div>
     </section>
@@ -267,10 +275,10 @@
                 <div class="header-underline"></div>
             </div>
             <div class="gallery-filter">
-                <button class="filter-btn active" onclick="filterGallery('all')">All</button>
-                <button class="filter-btn" onclick="filterGallery('university')">University</button>
-                <button class="filter-btn" onclick="filterGallery('campus')">Campus</button>
-                <button class="filter-btn" onclick="filterGallery('events')">Events</button>
+                <button class="filter-btn active" onclick="filterGallery(this,'all')">All</button>
+                <button class="filter-btn" onclick="filterGallery(this,'university')">University</button>
+                <button class="filter-btn" onclick="filterGallery(this,'campus')">Campus</button>
+                <button class="filter-btn" onclick="filterGallery(this,'events')">Events</button>
             </div>
             <div class="gallery-grid" id="galleryGrid">
                 <!-- Gallery images will be loaded dynamically -->
@@ -460,46 +468,135 @@
             <span class="close" id="eventClose">&times;</span>
             <h2>Inscription Événement</h2>
             <p class="event-subtitle">Rejoignez notre prochain événement CREF</p>
-            
-            <form id="eventForm" class="event-form">
-                <div class="form-group">
-                    <label for="eventNom">Nom *</label>
-                    <input type="text" id="eventNom" name="nom" required>
+
+            <div class="event-modal-inner">
+                <div class="event-form-wrapper">
+                    <form id="eventForm" class="event-form">
+                        <div class="form-group">
+                            <label for="eventNom">Nom *</label>
+                            <input type="text" id="eventNom" name="nom" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="eventPrenom">Prénom *</label>
+                            <input type="text" id="eventPrenom" name="prenom" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="eventFiliere">Filière *</label>
+                            <input type="text" id="eventFiliere" name="filiere" placeholder="ex: Lettres, Sciences, etc." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="eventEtablissement">Établissement *</label>
+                            <input type="text" id="eventEtablissement" name="etablissement" placeholder="Nom de votre établissement" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="eventNiveau">Niveau d'étude *</label>
+                            <select id="eventNiveau" name="niveau" required>
+                                <option value="">Sélectionner votre niveau</option>
+                                <option value="6eme">6ème</option>
+                                <option value="5eme">5ème</option>
+                                <option value="4eme">4ème</option>
+                                <option value="3eme">3ème</option>
+                                <option value="2nde">2nde</option>
+                                <option value="1ere">1ère</option>
+                                <option value="terminale">Terminale</option>
+                                <option value="licence">Licence</option>
+                                <option value="master">Master</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="eventActivite">Choix de l'activité *</label>
+                            <select id="eventActivite" name="activite" required>
+                                <option value="">Sélectionner une activité</option>
+                                <option value="lecture">Lecture</option>
+                                <option value="dictee">Dictée</option>
+                                <option value="Question pour un champion">Questions pour un champion</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="submit-btn">S'inscrire à l'événement</button>
+                    </form>
                 </div>
 
-                <div class="form-group">
-                    <label for="eventPrenom">Prénom *</label>
-                    <input type="text" id="eventPrenom" name="prenom" required>
+                <div class="event-image-wrapper">
+                    <img class="event-image-prog" src="eventphoto.png" alt="Photo de l'événement">
+                </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="eventFiliere">Filière *</label>
-                    <input type="text" id="eventFiliere" name="filiere" placeholder="ex: Lettres, Sciences, etc." required>
-                </div>
-
-                <div class="form-group">
-                    <label for="eventEtablissement">Établissement *</label>
-                    <input type="text" id="eventEtablissement" name="etablissement" placeholder="Nom de votre établissement" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="eventNiveau">Niveau d'étude *</label>
-                    <select id="eventNiveau" name="niveau" required>
-                        <option value="">Sélectionner votre niveau</option>
-                        <option value="6eme">6ème</option>
-                        <option value="5eme">5ème</option>
-                        <option value="4eme">4ème</option>
-                        <option value="3eme">3ème</option>
-                        <option value="2nde">2nde</option>
-                        <option value="1ere">1ère</option>
-                        <option value="terminale">Terminale</option>
-                        <option value="licence">Licence</option>
-                        <option value="master">Master</option>
-                    </select>
-                </div>
-
-                <button type="submit" class="submit-btn">S'inscrire à l'événement</button>
-            </form>
+            <div class="event-schedule-wrapper">
+                <h3>Au programme</h3>
+                <table class="event-schedule">
+                    <thead>
+                        <tr>
+                            <th>Heure</th>
+                            <th>20 mai</th>
+                            <th>21 mai</th>
+                            <th>22 mai</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>09H00</td>
+                            <td>Cérémonie d'ouverture</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>09H30</td>
+                            <td>
+                                <ul class="schedule-list">
+                                    <li>Concours de dictée (lycéens)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="schedule-list">
+                                    <li>Concours de dictée (universitaires)</li>
+                                    <li>Concours de lecture (universitaires)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="schedule-list">
+                                    <li>Questions pour un champion (universitaires)</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>14H</td>
+                            <td>
+                                <ul class="schedule-list">
+                                    <li>Concours de lecture (lycéens)</li>
+                                    <li>Questions pour un champion (lycéens)</li>
+                                    <li>Concours de karaoké francophone</li>
+                                    <li>Zumba</li>
+                                    <li>e-sport</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="schedule-list">
+                                    <li>Concours de karaoké francophone</li>
+                                    <li>Zumba</li>
+                                    <li>e-sport</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="schedule-list">
+                                    <li>Cohésion des jeunes</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Autres</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 

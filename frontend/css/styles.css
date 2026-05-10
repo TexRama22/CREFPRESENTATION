@@ -1374,13 +1374,16 @@ section {
 .event-tab-btn {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
-    border: none;
+    border: 3px solid rgba(81, 179, 138, 0.966);
     padding: 15px 20px;
-    border-radius: 50px;
+    border-radius: 25px;
     cursor: pointer;
     display: flex;
     align-items: center;
+    flex-direction: column;
     gap: 10px;
+    height: 150px;
+    width: 200px;
     font-weight: 600;
     font-size: 1rem;
     box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
@@ -1390,7 +1393,7 @@ section {
 
 .event-tab-btn:hover {
     transform: scale(1.1);
-    box-shadow: 0 6px 30px rgba(99, 102, 241, 0.6);
+    box-shadow: 0 6px 30px rgba(13, 68, 219, 0.6);
 }
 
 .event-tab-btn:active {
@@ -1400,18 +1403,33 @@ section {
 .event-tab-btn i {
     font-size: 1.3rem;
 }
+.event-date {
+    font-size: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-top: 4px;
+    color: #00d4ff; /* Une couleur néon pour le côté Gaming Hub */
+    transition: all 0.3s ease;
+}
 
+.event-tab-btn:hover .event-date {
+    background: rgba(0, 212, 255, 0.2);
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+    
+}
 /* Event Modal Styles */
 .event-modal .modal-content {
     background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);
     border-radius: 20px;
-    padding: 40px;
-    max-width: 500px;
+    padding: 30px;
+    max-width: 900px; /* élargi pour accueillir image + formulaire */
     width: 95%;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
-    max-height: 90vh;
+    max-height: calc(100vh - 80px); /* plus d'espace vertical pour afficher planning */
     overflow-y: auto;
 }
 
@@ -1518,5 +1536,109 @@ section {
 
     .event-modal .event-content {
         padding: 30px 20px;
+    }
+}
+
+/* Layout for event modal: form + image side-by-side */
+.event-modal .event-modal-inner {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+/* Ne pas laisser l'inner prendre tout l'espace vertical : laisser le planning visible en dessous */
+.event-modal .event-modal-inner {
+    flex: none;
+}
+
+.event-form-wrapper {
+    flex: 1 1 60%;
+    min-width: 260px;
+}
+
+/* Limiter la hauteur du formulaire pour que le planning reste visible sous celui-ci */
+.event-form-wrapper {
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.event-image-wrapper {
+    flex: 0 0 320px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.event-image-wrapper .event-image-prog {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.event-schedule-wrapper {
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
+/* S'assurer que le wrapper du planning reste visible et ne soit pas caché */
+.event-schedule-wrapper {
+    flex: none;
+}
+
+.event-schedule {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    min-width: 480px;
+}
+
+.event-schedule th,
+.event-schedule td {
+    border: 1px solid var(--border-color);
+    padding: 10px 12px;
+}
+
+.event-schedule th {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: #fff;
+    font-weight: 700;
+}
+
+/* Styles pour listes à l'intérieur des cellules du planning */
+.event-schedule td {
+    vertical-align: top;
+}
+
+.event-schedule td ul.schedule-list {
+    margin: 0;
+    padding-left: 18px;
+    text-align: left;
+}
+
+.event-schedule td ul.schedule-list li {
+    margin: 4px 0;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    .event-modal .event-modal-inner {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .event-image-wrapper {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+
+    .event-image-wrapper .event-image-prog {
+        max-width: 100%;
+        height: auto;
+    }
+    .event-schedule {
+        min-width: 0;
     }
 }
